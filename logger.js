@@ -1,7 +1,10 @@
-const url = 'http://www.example.com';
+const events = require('events');
 
-function log(message) {
-  console.log('🐝', message);
+class Logger extends events.EventEmitter {
+  log(msg) {
+    console.log(msg);
+    this.emit('messageLogged', {id: 1, url: 'https://abc.com'})
+  }
 }
 
-module.exports = log;
+module.exports = Logger;
