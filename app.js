@@ -20,3 +20,10 @@ fs.readdir('./', function(err, files) {
     console.log('😊', files);
   }
 });
+fs.readdir('./', (err, files) => {
+  if (err) {
+    console.log('😾', err);
+  } else {
+    console.log('😺', files);
+  }
+});
