@@ -4,4 +4,4 @@ function log(message) {
   console.log('🐝', message);
 }
 
-module.exports.beeLog = log;
+module.exports = log;
