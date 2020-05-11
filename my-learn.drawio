@@ -1,0 +1,18 @@
+<mxfile host="localhost" modified="2020-05-11T10:56:54.460Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.0 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36" etag="2ih9sBGh_CAXgnyEn2gT" version="13.0.9">
+    <diagram id="a9mD9EvG-1P6hnXgOUD7" name="Page-1">
+        <mxGraphModel dx="497" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Module" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fontFamily=Tahoma;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="160" width="160" height="140" as="geometry">
+                        <mxRectangle x="250" y="300" width="80" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Path Module&#10;OS Module&#10;File System module&#10;Events Module&#10;Extending Event Emitter&#10;HTTP Module&#10;" style="align=center;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontStyle=0;fontFamily=Tahoma;" parent="2" vertex="1">
+                    <mxGeometry y="30" width="160" height="110" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
