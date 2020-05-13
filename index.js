@@ -10,7 +10,10 @@ app.get('/api/courses', (req, res) => {
 })
 
 app.get('/api/courses/:year/:month', (req, res) => {
-  res.send({ req: req.params}); // {"req":{"year":"2020","month":"05"}}
+  res.send({ 
+    param: req.params,
+    qry: req.query
+  }); // {"param":{"year":"2020","month":"05"},"qry":{"sortBy":"year","version":"1"}}
 })
 
 const port = process.env.PORT || 5000;
