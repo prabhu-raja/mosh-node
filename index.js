@@ -1,19 +1,28 @@
 const express = require('express');
 const app = express();
 
+const courses = [
+  { id:1, name: 'course1' },
+  { id:2, name: 'course2' },
+  { id:3, name: 'course3' },
+  { id:4, name: 'course4' },
+  { id:5, name: 'course5' }
+];
+
 app.get('/', (req, res) => {
   res.send('Hello Canada 🇨🇦');
 });
 
 app.get('/api/courses', (req, res) => {
-  res.send({ some: 'json' });
+  res.send(courses);
 })
 
-app.get('/api/courses/:year/:month', (req, res) => {
-  res.send({ 
-    param: req.params,
-    qry: req.query
-  }); // {"param":{"year":"2020","month":"05"},"qry":{"sortBy":"year","version":"1"}}
+app.get('/api/courses/:id', (req, res) => {
+  const course = courses.find(val => val.id === parseInt(req.params.id));
+  if(!course) {
+    res.status(404).send('Course with given id was not found😿');
+  }
+  res.send(course);
 })
 
 const port = process.env.PORT || 5000;
