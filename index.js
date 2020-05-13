@@ -9,7 +9,11 @@ app.get('/api/courses', (req, res) => {
   res.send({ some: 'json' });
 })
 
-const port = process.env.PORT || 6000;
+app.get('/api/courses/:id', (req, res) => {
+  res.send({ req: req.params.id });
+})
+
+const port = process.env.PORT || 5000;
 // * In MAC we can set port by adding command 'export PORT=5000'
 // * In WINDOWS we can set port by adding command 'set PORT=5000'
 
