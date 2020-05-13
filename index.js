@@ -9,4 +9,9 @@ app.get('/api/courses', (req, res) => {
   res.send({ some: 'json' });
 })
 
-app.listen('5000', () => console.log('Listening on Port 5000 ⏰'));
+const port = process.env.PORT || 6000;
+// * In MAC we can set port by adding command 'export PORT=5000'
+// * In WINDOWS we can set port by adding command 'set PORT=5000'
+
+app.listen(port, () => console.log(`Listening on port ${port} ⏰`));
+
