@@ -37,13 +37,11 @@ app.post('/api/courses', (req, res) => {
 
 app.put('/api/courses/:id', (req, res) => {
   // * 404 not found
-  console.log('👍 - id', req.params.id);
   const course = courses.find(val => val.id === parseInt(req.params.id));
   if(!course) {
     res.status(404).send('Course with given id was not found😿');
   }
   // * 400 Bad Request
-  console.log('👍-Put body', req.body);
   const { error } = validateCourse(req.body);
   if(error) {
     res.status(400).send(error.details[0].message);
@@ -52,6 +50,18 @@ app.put('/api/courses/:id', (req, res) => {
   course.name = req.body.name;
   res.send(course);
 });
+
+app.delete('/api/courses/:id', (req, res) => {
+    // * 404 not found
+    const course = courses.find(val => val.id === parseInt(req.params.id));
+    if(!course) {
+      res.status(404).send('Course with given id was not found😿');
+    }
+    //
+    const index = courses.indexOf(course);
+    courses.splice(index, 1);
+    res.send(course);
+})
 
 app.get('/api/courses/:id', (req, res) => {
   const course = courses.find(val => val.id === parseInt(req.params.id));
