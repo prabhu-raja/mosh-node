@@ -1,18 +1,11 @@
 const Joi = require('joi');
+const logger = require('./init-logger');
 const express = require('express');
 const app = express();
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log('🚕Logging....🚕');
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('🚓Authenticating....🚓');
-  next();
-});
+app.use(logger);
 
 const courses = [
   { id:1, name: 'course1' },
