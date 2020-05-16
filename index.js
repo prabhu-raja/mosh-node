@@ -1,3 +1,4 @@
+const config = require('config');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const Joi = require('joi');
@@ -9,6 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
 app.use(helmet());
+
+console.log(`App Name: ${config.get('name')}`);
+console.log(`Mail Server: ${config.get('mail.host')}`);
+
 
 // * In MAC we can set NODE_ENV by adding in command 'export NODE_ENV=prod'
 // * In WINDOWS we can set NODE_ENV by adding command 'set NODE_ENV=prod'
