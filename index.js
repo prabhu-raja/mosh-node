@@ -13,6 +13,7 @@ app.use(helmet());
 
 console.log(`App Name: ${config.get('name')}`);
 console.log(`Mail Server: ${config.get('mail.host')}`);
+console.log(`Mail Pwd: ${config.get('mail.password')}`);
 
 
 // * In MAC we can set NODE_ENV by adding in command 'export NODE_ENV=prod'
