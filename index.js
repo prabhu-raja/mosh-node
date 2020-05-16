@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const Joi = require('joi');
 const logger = require('./init-logger');
 const express = require('express');
+const debug = require('debug')('app:startup');
 const app = express();
 
 app.use(express.json());
@@ -11,16 +12,18 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
 app.use(helmet());
 
-console.log(`App Name: ${config.get('name')}`);
-console.log(`Mail Server: ${config.get('mail.host')}`);
-console.log(`Mail Pwd: ${config.get('mail.password')}`);
+// * set DEBUG by adding in command 'export DEBUG=app:startup'
+// * ex: 'export DEBUG=app:*, export DEBUG=app:startup, app:DB'
+debug(`App Name: ${config.get('name')}`);
+debug(`Mail Server: ${config.get('mail.host')}`);
+debug(`Mail Pwd: ${config.get('mail.password')}`);
 
 
 // * In MAC we can set NODE_ENV by adding in command 'export NODE_ENV=prod'
 // * In WINDOWS we can set NODE_ENV by adding command 'set NODE_ENV=prod'
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
-  console.log('🐮 Morgon Enabled...');
+  debug('🐮 Morgon Enabled...');
 }
 
 app.use(logger);
@@ -43,7 +46,7 @@ app.get('/api/courses', (req, res) => {
 
 app.post('/api/courses', (req, res) => {
   // * 400 Bad Request
-  console.log('👍post', req.body)
+  debug('👍post', req.body)
   const { error } = validateCourse(req.body);
   if(error) {
     return res.status(400).send(error.details[0].message);
@@ -96,7 +99,7 @@ function validateCourse(course) {
   const schema = {
     name: Joi.string().min(3).required()
   }
-  console.log('22', Joi.validate(course, schema));
+  debug('22', Joi.validate(course, schema));
   return Joi.validate(course, schema);
 }
 
@@ -104,5 +107,5 @@ const port = process.env.PORT || 5000;
 // * In MAC we can set port by adding command 'export PORT=5000'
 // * In WINDOWS we can set port by adding command 'set PORT=5000'
 
-app.listen(port, () => console.log(`Listening on port ${port} ⏰`));
+app.listen(port, () => debug(`Listening on port ${port} ⏰`));
 
