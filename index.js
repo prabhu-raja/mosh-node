@@ -5,15 +5,17 @@ const logger = require('./init-logger');
 const express = require('express');
 const app = express();
 
-console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-console.log(`app: ${app.get('env')}`);
-
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
 app.use(helmet());
-app.use(morgan('tiny'));
+
+// * In MAC we can set NODE_ENV by adding in command 'export NODE_ENV=prod'
+// * In WINDOWS we can set NODE_ENV by adding command 'set NODE_ENV=prod'
+if (app.get('env') === 'development') {
+  app.use(morgan('tiny'));
+  console.log('🐮 Morgon Enabled...');
+}
 
 app.use(logger);
 
