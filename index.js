@@ -7,6 +7,7 @@ const express = require('express');
 const debug = require('debug')('app:startup');
 const app = express();
 
+app.set('view engine', 'pug'); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
@@ -37,7 +38,11 @@ const courses = [
 ];
 
 app.get('/', (req, res) => {
-  res.send('Hello Canada 🇨🇦');
+  // res.send('Hello Canada 🇨🇦');
+  res.render('index', {
+    title: 'From Pug 🐶',
+    message: 'Hello Canada 🇨🇦'
+  })
 });
 
 app.get('/api/courses', (req, res) => {
